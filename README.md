@@ -36,3 +36,5 @@ paloalto-software-upgrade.sh
   My favorite and the one that caused me the most heartburn.  But it works pretty well, simplifies downloads and software installs.  Limited in some logic functionality but it will do the job.  It would be nice to make a decision on if a base image has been downloaded and/or is needed, but haven't got there.  So you just have to know that you need to do that.  I don't currently trust this to do multiple firewalls in a row unattended or otherwise, so I just do one at a time for now but I bet it could be massaged better.
   
   
+paloalto-configs.sh
+  Exports the device state and saves it as $hostname.tgz (which is based off the friendly name you give it in the inventory file).  This file can be used to restore the entire config to a new device should you ever have to do that.  If you ever hope to have to restore a new firewall, this is a much easier way to do it.  Schedule this to run via crontab as well to automate backups.
