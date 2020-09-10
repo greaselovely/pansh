@@ -38,3 +38,6 @@ paloalto-software-upgrade.sh
   
 paloalto-configs.sh
   Exports the device state and saves it as $hostname.tgz (which is based off the friendly name you give it in the inventory file).  This file can be used to restore the entire config to a new device should you ever have to do that.  If you ever hope to have to restore a new firewall, this is a much easier way to do it.  Schedule this to run via crontab as well to automate backups.
+
+paloalto-schedule-reboot.sh
+  Just finds whatever device you're looking for in the inventory and moves it over to the rebootlist.  I needed a way to schedule reboots easily instead of manually editing the file.  That's all this does, lazy man's script.
