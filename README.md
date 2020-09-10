@@ -27,7 +27,7 @@ paloalto-reboot.sh
   A reboot script, pretty dangerous.
   This does not use the default inventory list, it references the rebootlist.txt.
   I have the following in crontab:
-     00 03 * * * /home/path-to/scripts/paloalto-reboot.sh
+     00 03 * * * /home/panosh/scripts/paloalto-reboot.sh
   This will check to see if there are any firewalls in the rebootlist.txt (found in the $bounce path) and if so, then at the scheduled time (in my case, 0300 / 3:00AM) it will reboot firewalls.
   It sleeps for :30 min and then checks to see if the firewall is operational or not, and then will email you.  You may have to setup sendmail on your box to get email notifications.
   
