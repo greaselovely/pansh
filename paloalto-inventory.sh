@@ -1,4 +1,4 @@
-
+#!/bin/bash
 #not using the central var file as it creates loops in the inventory check
 
 subfolder="inventory"
