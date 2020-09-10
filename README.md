@@ -14,8 +14,7 @@ Email notifications are using sendmail, so you'll have to install sendmail and c
 
 Also, you'll have to chmod +x the shell scripts to make them usable, but I'm guessing you knew that already.  If not, do it.
 
-
-There are four initial scripts that are available
+---
 
 paloalto-var.sh
   A collection of variables being sourced from other scripts.  Update this file as needed for paths you prefer
