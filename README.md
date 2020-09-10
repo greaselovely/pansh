@@ -12,6 +12,7 @@ The initial scripts published use all native tools but because we are parsing th
 
 Email notifications are using sendmail, so you'll have to install sendmail and configure it.  I setup mine to forward mail, but your config will depend on your environment.
 
+Also, you'll have to chmod +x the shell scripts to make them usable, but I'm guessing you knew that already.  If not, do it.
 
 
 There are four initial scripts that are available
