@@ -41,3 +41,6 @@ paloalto-configs.sh
 
 paloalto-schedule-reboot.sh
   Just finds whatever device you're looking for in the inventory and moves it over to the rebootlist.  I needed a way to schedule reboots easily instead of manually editing the file.  That's all this does, lazy man's script.
+
+paloalto-sn.sh
+  A much lesser used script, was used early on for random needs, but this just gets the SN, hostname and model of firewall.  Useful, but only a little.
