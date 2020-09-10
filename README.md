@@ -1,4 +1,4 @@
-# pansh
+# panosh
 
 
 A small collection of shell scripts I use to manage Palo Alto firewalls.  Some of the initial scripts that I am publishing I think a lot of people can utilize and the coding rookies of the world, like myself, can see what's going on with it and modify it pretty simply to meet their needs.  The other coding folks will scoff and ask why didn't I use python.  ;)  See above.
