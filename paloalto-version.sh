@@ -23,7 +23,7 @@ function ssi(){
 	apielement="<show><system><info></info></system></show>"
 	apikey="&key=$key"
 	apiurl="https://$ip":"$port/$apiaction$apixpath$apielement$apikey"
-	curl -sk --connect-timeout 9.01 -# --output "$dump/$name.$FUNCNAME" "$apiurl"
+	curl -sk --connect-timeout 59.01 -# --output "$dump/$name.$FUNCNAME" "$apiurl"
 	if [ ! -e "$dump/$name.$FUNCNAME" ]
 		then
 			echo "  Could Not Reach Firewall"
