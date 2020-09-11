@@ -43,3 +43,6 @@ paloalto-schedule-reboot.sh
 
 paloalto-sn.sh
   A much lesser used script, was used early on for random needs, but this just gets the SN, hostname and model of firewall.  Useful, but only a little.
+
+paloalto-version.sh
+  I use this one more often than not, it can give me a quick glance at a list of firewalls and the versions they are running.  And then I can run the software ugprade as needed and then schedule reboots.  And the world harmoniously begins to hum.
