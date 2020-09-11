@@ -23,9 +23,15 @@ function ssi(){
 	apielement="<show><system><info></info></system></show>"
 	apikey="&key=$key"
 	apiurl="https://$ip":"$port/$apiaction$apixpath$apielement$apikey"
-	curl -sk --connect-timeout 59.01 -# --output "$dump/$name.$FUNCNAME" "$apiurl"	
-	realversion=$(xmllint --xpath "string(//sw-version)" $dump/$name.$FUNCNAME)
-	realname=$(xmllint --xpath "string(//devicename)" $dump/$name.$FUNCNAME)
+	curl -sk --connect-timeout 9.01 -# --output "$dump/$name.$FUNCNAME" "$apiurl"
+	if [ ! -e "$dump/$name.$FUNCNAME" ]
+		then
+			echo "  Could Not Reach Firewall"
+			exit 0
+		else
+			realversion=$(xmllint --xpath "string(//sw-version)" $dump/$name.$FUNCNAME)
+			realname=$(xmllint --xpath "string(//devicename)" $dump/$name.$FUNCNAME)
+	fi
 	sleep 3
 }
 
@@ -48,7 +54,7 @@ for i in $(echo "$equipment");
 clear
 echo
 echo
-echo "    Attempting to Access $name..."
+echo "  Attempting to Access $name..."
 
 ssi
 
@@ -56,13 +62,17 @@ if [ -z "$realname" ]
 	then realversion="Failed"
 fi
 
-echo -e "$name\t$realversion" | tr '[:lower:]' '[:upper:]' >> "$dump/$win"
+if [ -z "$realname" ]
+	then
+		echo
+	else
+		echo -e "$name\t$realversion" | tr '[:lower:]' '[:upper:]' >> "$dump/$win"
+fi
 
-rm "$dump/$name".* 2>/dev/nul
-rm "$dump/$name" 2>/dev/nul
+rm "$dump/$name".* 2>/dev/null
+rm "$dump/$name" 2>/dev/null
 
 done;
-clear
 
 if [ -z "$realname" ]
 	then	
@@ -84,3 +94,5 @@ if [ -z "$realname" ]
 		cat "$dump/email.html"
 		) | sendmail -t
 fi
+
+echo "  Report Sent $emailto"
