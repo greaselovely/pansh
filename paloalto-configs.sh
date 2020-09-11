@@ -31,7 +31,7 @@ function get_config() {
 
 function check_hostname(){
 	tar -xf "$dump/$hostname.tgz" -C "$dump/$hostname"
-	name-from-run=$(xmllint --xpath "string(//hostname)" "$dump/$hostname/running-config.xml")
+	namefromrun=$(xmllint --xpath "string(//hostname)" "$dump/$hostname/running-config.xml")
 }
 
 touch "$dump/$win"
@@ -57,7 +57,7 @@ get_config
 check_hostname
 
 # Check if the file was transferred
-if [ -z "$name-from-run" ]
+if [ -z "$namefromrun" ]
 	then status="FAILED"
 	else status="SUCCESS"
 fi
