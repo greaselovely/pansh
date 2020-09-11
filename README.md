@@ -14,6 +14,8 @@ Email notifications are using sendmail, so you'll have to install sendmail and c
 
 Also, you'll have to chmod +x the shell scripts to make them usable, but I'm guessing you knew that already.  If not, do it.
 
+Very important, do not use underscores for your inventory hostnames.  That is the file separator by default, unless you change it.
+
 ---
 
 paloalto-var.sh
