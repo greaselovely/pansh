@@ -63,8 +63,6 @@ if [ -z "$namefromrun" ]
 fi
 
 rm -rf "$dump/$hostname"
-
-# diff the files out to a logfile that gets emailed out
 echo -e "$name\t\t$status" >> "$dump/$win"
 
 done;
