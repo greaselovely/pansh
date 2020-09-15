@@ -18,21 +18,25 @@ function reboot_frwl(){
 	time1=$(date +%H:%M:%S)
 	# REBOOT COMMAND!
 	# VERY DANGEROUS!
-	apiaction="api/?type=op&cmd=<request><restart><system></system></restart></request>"
-	# JUST FOR TESTING!
-	#apiaction="api/?type=op&cmd=<target><show></show></target>"
+	apiaction="api/?&type=op&cmd="
+	apixpath=""
+	apielement="<request><restart><system></system></restart></request>"
 	apikey="&key=$key"
-	apiurl="https://$ip":"$port/$apiaction$apikey"
+	apiurl="https://$ip":"$port/$apiaction$apixpath$apielement$apikey"
+	# JUST FOR TESTING:
+	#apiaction="api/?type=op&cmd=<target><show></show></target>"
 	curl -sk --connect-timeout 59.01 -# --output "$dump/$name-reboot.xml" "$apiurl"
 	echo "$name		Start: $time1" >> "$bounce/reboots.log"
-	
 }
 
 function validate_frwl(){
+	# show system info to validate firewall upon reboot
 	time2=$(date +%H:%M:%S)
-	apicheck="api/?type=op&cmd=<show><system><info></info></system></show>"
+	apiaction="api/?&type=op&cmd="
+	apixpath=""
+	apielement="<show><system><info></info></system></show>"
 	apikey="&key=$key"
-	apiurl="https://$ip":"$port/$apicheck$apikey"
+	apiurl="https://$ip":"$port/$apiaction$apixpath$apielement$apikey"
 	curl -sk --connect-timeout 59.01 -# --output "$dump/$name-reboot-status.xml" "$apiurl"
 	statuscheck=$(xmllint --xpath "string(//hostname)" $dump/$name-reboot-status.xml 2>/dev/null)
 	
