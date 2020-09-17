@@ -26,8 +26,8 @@ function ssi(){
 	curl -sk --connect-timeout 59.01 -# --output "$dump/$name.$FUNCNAME" "$apiurl"
 	if [ ! -e "$dump/$name.$FUNCNAME" ]
 		then
-			echo "  Could Not Reach Firewall"
-			exit 0
+			realversion="UNREACHABLE"
+			realname="$name"
 		else
 			realversion=$(xmllint --xpath "string(//sw-version)" $dump/$name.$FUNCNAME)
 			realname=$(xmllint --xpath "string(//devicename)" $dump/$name.$FUNCNAME)
@@ -58,16 +58,7 @@ echo "  Attempting to Access $name..."
 
 ssi
 
-if [ -z "$realname" ]
-	then realversion="Failed"
-fi
-
-if [ -z "$realname" ]
-	then
-		echo
-	else
-		echo -e "$name\t$realversion" | tr '[:lower:]' '[:upper:]' >> "$dump/$win"
-fi
+echo -e "$realname\t$realversion" | tr '[:lower:]' '[:upper:]' >> "$dump/$win"
 
 rm "$dump/$name".* 2>/dev/null
 rm "$dump/$name" 2>/dev/null
