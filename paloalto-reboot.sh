@@ -24,7 +24,7 @@ function reboot_frwl(){
 	apikey="&key=$key"
 	apiurl="https://$ip":"$port/$apiaction$apixpath$apielement$apikey"
 	# JUST FOR TESTING:
-	#apiaction="api/?type=op&cmd=<target><show></show></target>"
+	#apielement="<target><show></show></target>"
 	curl -sk --connect-timeout 59.01 -# --output "$dump/$name-reboot.xml" "$apiurl"
 	echo "$name		Start: $time1" >> "$bounce/reboots.log"
 }
