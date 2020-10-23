@@ -3,7 +3,6 @@
 # Usage: ./paloalto-script-name.sh
 #     or ./paloalto-script-name.sh HQ
 # The second allows you to specify by a simple phrase to 
-# backup only the configs of firewalls that match that second word ie..."HQ" (using grep)
 
 ################################
 ########## SETTINGS ############
