@@ -120,7 +120,7 @@ echo & read -n1 -p "  Please confirm (y/n) : " confirm
 
 if [ "$confirm" != "y" ];
 	then 
-		echo "  OK.  Here's your URL key:"
+		echo "  OK.  Here's your API key:"
 		echo "  $key "
 		exit
 	else 
