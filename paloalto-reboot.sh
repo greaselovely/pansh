@@ -8,14 +8,14 @@ subfolder="reboots"
 source "${HOME}/panosh/paloalto-var.sh"
 rb="$bounce/$rebootlist"
 
-equipment=$(cat $rb 2>/dev/null)
+equipment=$(cat $rb | sort -r 2>/dev/null)
+
 
 
 ################################
 ####### SETTINGS END############
 
 function reboot_frwl(){
-	time1=$(date +%H:%M:%S)
 	# REBOOT COMMAND!
 	# VERY DANGEROUS!
 	apiaction="api/?&type=op&cmd="
@@ -24,8 +24,9 @@ function reboot_frwl(){
 	apikey="&key=$key"
 	apiurl="https://$ip":"$port/$apiaction$apixpath$apielement$apikey"
 	# JUST FOR TESTING:
-	#apielement="<target><show></show></target>"
-	curl -sk --connect-timeout 59.01 -# --output "$dump/$name-reboot.xml" "$apiurl"
+	#apiaction="api/?type=op&cmd=<target><show></show></target>"
+	time1=$(date +%H:%M:%S)
+	curl --max-time 59.11 -sk --connect-timeout 59.01 -# --output "$dump/$name-reboot.xml" "$apiurl"
 	echo "$name		Start: $time1" >> "$bounce/reboots.log"
 }
 
@@ -49,13 +50,6 @@ function validate_frwl(){
 	fi
 	
 }
-
-if [ $1 ] 
-	then 
-		echo "Yeah, we don't look at input on this script"
-		sleep 4s
-		clear
-fi
 
 if [ ! -e "$bounce/reboots.tmp" ]; 
 	then 
