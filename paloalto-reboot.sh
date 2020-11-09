@@ -24,7 +24,7 @@ function reboot_frwl(){
 	apikey="&key=$key"
 	apiurl="https://$ip":"$port/$apiaction$apixpath$apielement$apikey"
 	# JUST FOR TESTING:
-	#apiaction="api/?type=op&cmd=<target><show></show></target>"
+	#apielement="<target><show></show></target>"
 	time1=$(date +%H:%M:%S)
 	curl --max-time 59.11 -sk --connect-timeout 59.01 -# --output "$dump/$name-reboot.xml" "$apiurl"
 	echo "$name		Start: $time1" >> "$bounce/reboots.log"
@@ -92,11 +92,12 @@ done
 sleep 30m
 
 
+
 #########################################
 ########## Check On Reboots #############
 
 
-equipment=$(cat $rb 2>/dev/null)
+equipment=$(cat $rb | sort -r 2>/dev/null)
 
 if [ -z "$equipment" ]; 
 	then 
