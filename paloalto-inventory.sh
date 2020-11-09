@@ -133,4 +133,5 @@ if [ "$confirm" != "y" ];
 		echo
 fi
 
-
+#cleanup
+rm -rf "$dump"
