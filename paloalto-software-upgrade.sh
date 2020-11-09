@@ -162,7 +162,8 @@ function job_progress(){
 				sji
 				echo -ne "  Job id $jobid is at $progress%\033[0K\r"
 				sleep 5
-				# fucking palo alto replaces the progress integer with the time it ended and the while loop doesn't like the colons, so I have to remove them...
+				# palo alto replaces the progress integer with the time it ended and 
+				# the while loop doesn't like the colons, so I have to remove them:
 				progress=$(xmllint --xpath "string(//progress)" "$dump/$name.sji" | sed s/://g)
 		done
 	job_status=""
@@ -213,7 +214,6 @@ for i in $(echo "$equipment");
 		port=$(echo $i | awk 'BEGIN{FS="_";}{print $3}')
 		key=$(echo $i | awk 'BEGIN{FS="_";}{print $4}')
 
-exec -c
 
 rm "$dump/$name."* 2>/dev/null
 rm "$dump/$name" 2>/dev/null
@@ -310,7 +310,7 @@ if [ "$downloadorinstall" = "i" ] || [ "$installonly" == "y" ]
 		echo
 fi
 
-if [ "$downloadagain" == "y" ]
+if [ "$downloadagain" == "y" ] || [ "$downloadagain" == "" ]
 	then
 		panos_download
 
@@ -364,11 +364,10 @@ if [ "$installonly" == "n" ]
 			else
 				if [ ! -e "$bounce/$rebootlist" ]
 					then 
-						echo "$equipment" > "$bounce/$rebootlist"
+						echo "${name}_${ip}_${port}_${key}" > "$bounce/$rebootlist"
 					else
-						echo "$equipment" >> "$bounce/$rebootlist"
+						echo "${name}_${ip}_${port}_${key}" >> "$bounce/$rebootlist"
 				fi
-			echo 
 			echo "  Current Reboots Scheduled : "
 			echo
 			scheduled=$(cat "$bounce/$rebootlist")
@@ -385,6 +384,33 @@ fi
 
 rm "$dump/$name."* 2>/dev/null
 rm "$dump/$name" 2>/dev/null
+
+
+unset app_version
+unset current
+unset doesitexist
+unset downloadagain
+unset downloaded
+unset downloadorinstall
+unset errormessage
+unset failmessage
+unset installonly
+unset installresult
+unset installstatus
+unset job_status
+unset jobid
+unset latestquestion
+unset latestversion
+unset line
+unset progress
+unset rebootquestion
+unset result
+unset scheduled
+unset sji_message
+unset status
+unset userversion
+unset version
+
 
 done
 
