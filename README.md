@@ -45,6 +45,9 @@ paloalto-schedule-reboot.sh
 
 paloalto-sn.sh
   A much lesser used script, was used early on for random needs, but this just gets the SN, hostname and model of firewall.  Useful, but only a little.
-
+  
+paloalto-dynupdates.sh
+  A much lesser used script, was used early on to audit dynamic updates as firewalls weren't being configured consistently.  Relies on the paloalto-configs.sh script to have run or it will call it if there are no configurations backed up already for today.  It will extract the running-config.xml, rename it to the hostname found inside, and then query the dynamic updates.  It will review anti-virus, wildfile, and threat prevention.  I commented out GP because that's less useful and not widely used on all firewalls.
+  
 paloalto-version.sh
   I use this one more often than not, it can give me a quick glance at a list of firewalls and the versions they are running.  And then I can run the software ugprade as needed and then schedule reboots.  And the world harmoniously begins to hum.
