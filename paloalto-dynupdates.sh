@@ -58,7 +58,7 @@ for file in "$dump/"*".xml";
 	avtime=$(xmllint --xpath "string(//update-schedule//anti-virus//recurring//at)" "$file")
 	wftime=$(xmllint --xpath "string(//update-schedule//wildfire//recurring//at)" "$file")
 #	gptime=$(xmllint --xpath "string(//update-schedule//global-protect-clientless-vpn//recurring//at)" "$file")
-#   So the XML file / PAN doesn't give us the "when" in a string field, but rather a XML element and so we have to strip it out of the XML.  This is the current way I am doing, and if there's a more interesting way, I'd love to learn how if you know!
+#   So the XML file / PAN doesn't give us the "when" as a string in the XML, but rather a XML element header itself and so we have to strip it out of the XML.  This is the current way I am doing, and if there's a more interesting way, I'd love to learn how if you know!
 	tpwhen=$(xmllint --xpath "(//threats/recurring/*)" "$file" | head -1 | sed -e 's/<//g' -e 's/>//g' -e 's/sync-to-peer//g' -e 's/yes\///g' -e 's/no\///g') 2>/dev/null
 	avwhen=$(xmllint --xpath "(//anti-virus/recurring/*)" "$file" | head -1 | sed -e 's/<//g' -e 's/>//g' -e 's/sync-to-peer//g' -e 's/yes\///g' -e 's/no\///g') 2>/dev/null
 	wfwhen=$(xmllint --xpath "(//wildfire/recurring/*)" "$file" | head -1 | sed -e 's/<//g' -e 's/>//g' -e 's/sync-to-peer//g' -e 's/yes\///g' -e 's/no\///g')  2>/dev/null
