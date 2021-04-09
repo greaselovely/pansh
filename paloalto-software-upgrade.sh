@@ -9,7 +9,7 @@
 ################################
 
 # This can be run three ways:
-# ./scriptname force (this avoids the latest version check and allows you to download a specific version)
+# ./scriptname dev_name force (this avoids the latest version check and allows you to download a specific version)
 #		I saw an issue where a hotfix version was marked by PAN as "latest" so I had to create this work around.
 # ./scriptname WLP (or full hostname for grep to work)
 # ./scriptname (you'll be prompted for info)
@@ -243,8 +243,9 @@ fi
 
 error_check
 
+rssc
 
-if [ "$1" == "force" ]
+if [ "$2" == "force" ]
 	then
 		echo "  Forcing Install..."
 	else
@@ -255,8 +256,6 @@ if [ "$1" == "force" ]
 			exit 0
 		fi
 fi 
-
-rssc
 
 if [ "$version" != "$latestversion" ];
 	then 
