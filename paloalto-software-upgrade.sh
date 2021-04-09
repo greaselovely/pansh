@@ -44,7 +44,7 @@ function rssi(){
 	apiurl="https://$ip":"$port/$apiaction$apixpath$apielement$apikey"
 	curl -sk --connect-timeout 59.01 -# --output "$dump/$name.rssi" "$apiurl"	
 	current=$(xmllint --xpath "string(//versions/entry[current='yes']//version)" "$dump/$name.rssi")
-	xmllint --xpath "//versions/entry[latest='yes']" "$dump/$name.rssc" > "$dump/$name.tmp"
+	xmllint --xpath "//versions/entry[latest='yes']" "$dump/$name.rssi" > "$dump/$name.tmp"
 	downloaded=$(xmllint --xpath "string(//downloaded)" "$dump/$name.tmp" 2>/dev/null)
 	sleep 3
 }
