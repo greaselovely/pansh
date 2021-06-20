@@ -12,7 +12,7 @@ inventory="${HOME}/panosh/$vendor-inventory.txt"
 
 ###
 emailfrom="From: panosh Admin <no-reply@panosh.local>"
-emailto="To: my-email-adress@domain.com"
+emailto="To: my-email-address@domain.com"
 #	email addresses used in the sendmail functions for notifications
 ###
 
